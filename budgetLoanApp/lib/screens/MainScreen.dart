@@ -1,12 +1,8 @@
-/*
-   MainScreen.dart
-   The main screen for budgetLoanApp.
-   Last Modified 09/27/2020 by ItsOnlyCole
-*/
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'HomeWidget.dart';
+import 'BudgetWidget.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -15,13 +11,9 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-        'Home Screen',
-    ),
-    Text(
-        'Budget Screen'
-    ),
+  List<Widget> _widgetOptions = <Widget>[
+    HomeWidget(),
+    BudgetWidget(),
     Text(
         'Transactions Screen'
     ),
