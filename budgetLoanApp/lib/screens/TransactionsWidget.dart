@@ -4,12 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'MainScreen.dart';
 import '../Data.dart';
 
-class HomeWidget extends StatefulWidget {
+class TransactionsWidget extends StatefulWidget {
   @override
-  _HomeWidgetState createState() => _HomeWidgetState(); 
+  _TransactionsWidgetState createState() => _TransactionsWidgetState(); 
 }
 
-class _HomeWidgetState extends State<HomeWidget> {
+class _TransactionsWidgetState extends State<TransactionsWidget> {
   @override
   Widget build(BuildContext context){
     return Center(
@@ -18,19 +18,23 @@ class _HomeWidgetState extends State<HomeWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget> [
               Text(
-                  "Spendable Money",
+                  "Transaction History Goes Here",
                   style: TextStyle(
                       fontSize: 45.0,
                       color: customColors[WHITE],
                   ),
               ),
-              Text(
-                  ("\$" + data.formatData(data.moneyForSpending)),
-                  style: TextStyle(
-                      fontSize: 85.0,
-                      color: customColors[WHITE],
+              FlatButton(
+                  child: Text(
+                      ('Add Transaction'),
+                      style: TextStyle(
+                          color: customColors[GREY],
+                      ),
                   ),
-              ),
+                  color: customColors[WHITE],
+                  onPressed: () {/** */}
+                  //Pressing button would bring up add transaction screen
+              )
             ],
         ),
     );

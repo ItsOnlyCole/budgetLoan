@@ -3,6 +3,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'HomeWidget.dart';
 import 'BudgetWidget.dart';
+import 'LoanWidget.dart';
+import 'TransactionsWidget.dart';
+import '../Data.dart';
+
+const GREEN = "green";
+const WHITE = "white";
+const GREY = "grey";
+
+const Map<String, Color> customColors = {
+  GREEN: Colors.green,
+  WHITE: Colors.white,
+  GREY: Color.fromRGBO(112, 112, 112, 1),
+};
+
+Data data = new Data();
 
 class MainScreen extends StatefulWidget {
   @override
@@ -14,12 +29,8 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> _widgetOptions = <Widget>[
     HomeWidget(),
     BudgetWidget(),
-    Text(
-        'Transactions Screen'
-    ),
-    Text(
-        'Loans Screen'
-    ),
+    TransactionsWidget(),
+    LoanWidget(),
   ];
   
   void _onItemTapped(int index) {
@@ -31,52 +42,51 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: const Text('BudgetLoan'),
-        ),
+        appBar: customAppBar(),
+        backgroundColor: customColors[GREEN],
         body: Center(
             child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                   icon: Icon(
                       FontAwesomeIcons.home,
-                      color: Colors.grey,
+                      color: customColors[GREY],
                       ),
                   title: Text(
                       'Home',
-                      style: TextStyle(color: Colors.grey,),
+                      style: TextStyle(color: customColors[GREY],),
                       ),
               ),
               BottomNavigationBarItem(
                   icon: Icon(
                       FontAwesomeIcons.chartPie,
-                      color: Colors.grey,
+                      color: customColors[GREY],
                       ),
                   title: Text(
                       'Budget',
-                      style: TextStyle(color: Colors.grey,),
+                      style: TextStyle(color: customColors[GREY],),
                       ),
               ),
               BottomNavigationBarItem(
                   icon: Icon(
                       FontAwesomeIcons.dollarSign,
-                      color: Colors.grey,
+                      color: customColors[GREY],
                       ),
                   title: Text(
                       'Transactions',
-                      style: TextStyle(color: Colors.grey,),
+                      style: TextStyle(color: customColors[GREY],),
                       ),
               ),
               BottomNavigationBarItem(
                   icon: Icon(
                       FontAwesomeIcons.moneyCheckAlt,
-                      color: Colors.grey,
+                      color: customColors[GREY],
                       ),
                   title: Text(
                       'Loans',
-                      style: TextStyle(color: Colors.grey,),
+                      style: TextStyle(color: customColors[GREY],),
                       ),
               ),
             ],
@@ -85,4 +95,15 @@ class _MainScreenState extends State<MainScreen> {
         ),
     );
   }
+}
+
+Widget customAppBar() {
+  return PreferredSize(
+      preferredSize: Size.fromHeight(30),
+      child: AppBar(
+          backgroundColor: Colors.green,
+          elevation: 0,
+          title: const Text('BudgetLoan'),
+      ),
+  );
 }
